@@ -5,7 +5,9 @@ import java.util.Random;
 import java.util.Scanner;
 import java.util.ArrayList;
 
-
+/***
+ * Conversation class
+ */
 class Conversation implements ConversationRequirements {
 
   // Attributes 
@@ -31,32 +33,36 @@ class Conversation implements ConversationRequirements {
   }
 
   /**
-   * Starts and runs the conversation with the user
+   * Starts and runs the conversation with the user. 
+   * Scans for user input to determine the number of rounds, and puts the user input through the respond method.
+   * It also adds all the lines to the transcript array for later when we print it!
    */
   public void chat() {
     Scanner input = new Scanner(System.in);
 
-    System.out.println("Hello! I am your chatbot. How many rounds would you like to speak with me?");
+    System.out.println("<Hello! ^-^ I am your chatbot. How many rounds would you like to speak with me?>");
     this.numberOfRounds = input.nextInt();
     input.nextLine();
-    System.out.println("Great, let's start!");
+    System.out.println("<Great, let's start! You say something first! :D>");
 
     for(int i=0; i<this.numberOfRounds; i++){
     String userInput=input.nextLine();
-    String response = respond(userInput);
+    String response =respond(userInput);
     System.out.println(response);
     transcriptNotes.add("You:"+userInput);
     transcriptNotes.add("Me:"+response);
     }
+    System.out.println("<That was the last round. Talk to you later! :3>");
     input.close();
 
   }
 
   /**
-   * Prints transcript of conversation
+   * Prints transcript of conversation that was stored from the chat method. Uses for loop for each string in the array list.
    */
   public void printTranscript() {
-    System.out.println("\n---------Transcript--------");
+     System.out.println("\n<Before you go, here is a transcript of our great conversation ^o^>");
+      System.out.println("---------Transcript--------");
     for (String string : transcriptNotes) {
       System.out.println(string);
     }
@@ -66,6 +72,8 @@ class Conversation implements ConversationRequirements {
 
   /**
    * Gives appropriate response (mirrored or canned) to user input
+   * If statements determine if the mirror keywords are in the user input, and replaces them for the return string.
+   * If there is no mirror keyword, then it returns a random response from the canned responses.
    * @param inputString the users last line of input
    * @return mirrored or canned response to user input  
    */
@@ -96,6 +104,7 @@ class Conversation implements ConversationRequirements {
     }
     return returnString; 
   }
+
 
   public static void main(String[] arguments) {
 
