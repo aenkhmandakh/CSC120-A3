@@ -99,7 +99,6 @@ class Conversation implements ConversationRequirements {
       returnString= inputString.replaceAll("Mine", "Yours");
     }else{
       int randomIndex= random.nextInt(cannedResponses.length);
-
       returnString=cannedResponses[randomIndex];
     }
     return returnString; 
