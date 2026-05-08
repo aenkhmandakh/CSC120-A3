@@ -79,24 +79,25 @@ class Conversation implements ConversationRequirements {
    */
   public String respond(String inputString) {
     String returnString = ""; 
-    if (inputString.contains("You are")){
-      returnString= inputString.replaceAll("You are", "I am");
-    }else if(inputString.contains("You're")){
-      returnString= inputString.replaceAll("You're", "I'm");
-    }else if(inputString.contains("Your")){
-      returnString= inputString.replaceAll("Your", "My");
+    
+    if(inputString.contains("You're")){
+      returnString= inputString.replace("You're", "I'm");
+    }else if (inputString.contains("You are")){
+      returnString= inputString.replace("You are", "I am");
     }else if(inputString.contains("Yours")){
-      returnString= inputString.replaceAll("Yours", "Mine");
-    }else if(inputString.contains("I am")){
-      returnString= inputString.replaceAll("I am", "You are");
+      returnString= inputString.replace("Yours", "Mine");
+    }else if(inputString.contains("Your")){
+      returnString= inputString.replace("Your", "My");
     }else if(inputString.contains("I'm")){
-      returnString= inputString.replaceAll("I'm", "You're");
-    }else if(inputString.contains("I")){
-      returnString= inputString.replaceAll("I", "You");
+      returnString= inputString.replace("I'm", "You're");
+    }else if(inputString.contains("I am")){
+      returnString= inputString.replace("I am", "You are");
+    }else if(inputString.contains("Mine")){
+      returnString= inputString.replace("Mine", "Yours");
     }else if(inputString.contains("My")){
-      returnString= inputString.replaceAll("My", "Your");
-    } else if(inputString.contains("Mine")){
-      returnString= inputString.replaceAll("Mine", "Yours");
+      returnString= inputString.replace("My", "Your");
+    } else if(inputString.contains("I")){
+      returnString= inputString.replace("I", "You");
     }else{
       int randomIndex= random.nextInt(cannedResponses.length);
       returnString=cannedResponses[randomIndex];
